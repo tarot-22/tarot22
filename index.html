@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="zh”>
+<head>
+<meta charset="UTF-8" />
+<title>用塔羅牌克服22個人生課題</title>
+<style>
+  #cardDisplay {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+  <h1>用塔羅牌克服22個人生課題</h1>
+
+<button id="drawBtn">抽一張牌</button>
+
+<div id="cardDisplay">點擊按鈕抽牌</div>
+
+<img id="cardImage" src="" alt="Drawn Card Image" style="display: none;">
+<script>
+// Define the deck of 22 cards (e.g., Tarot Major Arcana names)
+const deck = [
+ "愚者", "魔術師", "女祭司", "女皇",
+  "皇帝", "教皇", "戀人", "戰車",
+  "力量", "隱士", "命運之輪", "正義",
+  "倒吊人", "死神", "節制", "惡魔",
+  "高塔", "星星", "月亮", "太陽",
+  "審判", "世界"
+];
+// Object to map card names to image file paths.  Update with your actual paths!
+const cardImages = {
+  "愚者": "images/fool.jpg",  // Replace with your actual image paths
+  "魔術師": "images/magician.jpg",
+  "女祭司": "images/high_priestess.jpg",
+  "女皇": "images/empress.jpg",
+  "皇帝": "images/emperor.jpg",
+  "教皇": "images/hierophant.jpg",
+  "戀人": "images/lovers.jpg",
+  "戰車": "images/chariot.jpg",
+  "力量": "images/strength.jpg",
+  "隱士": "images/hermit.jpg",
+  "命運之輪": "images/wheel_of_fortune.jpg",
+  "正義": "images/justice.jpg",
+  "倒吊人": "images/hanged_man.jpg",
+  "死神": "images/death.jpg",
+  "節制": "images/temperance.jpg",
+  "惡魔": "images/devil.jpg",
+  "高塔": "images/tower.jpg",
+  "星星": "images/star.jpg",
+  "月亮": "images/moon.jpg",
+  "太陽": "images/sun.jpg",
+  "審判": "images/judgment.jpg",
+  "世界": "images/world.jpg"
+};
+// Copy of the deck to draw from
+let currentDeck = [...deck];
+
+const drawBtn = document.getElementById("drawBtn");
+const cardDisplay = document.getElementById("cardDisplay");
+
+drawBtn.addEventListener("click", () => {
+  
+
+  // Pick a random index
+  const randomIndex = Math.floor(Math.random() * currentDeck.length);
+
+  // Get the card at that index
+  const drawnCard = currentDeck[randomIndex];
+
+  // Display the drawn card
+  cardDisplay.textContent = `你抽到的是${drawnCard}`;
+
+
+  // Display the image
+  const imagePath = cardImages[drawnCard];
+  if (imagePath) {
+    cardImage.src = imagePath;
+    cardImage.style.display = "block";
+  }
+});
+</script>
+
+</body>
+</html>
